@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Upload and Transcription</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Audio Upload and Transcription</h2>
+        <div class="form-group">
+            <label for="audio-file">Select an audio file:</label>
+            <input type="file" class="form-control-file" id="audio-file" accept="audio/*">
+        </div>
+        <button class="btn btn-primary btn-block" onclick="uploadAndTranscribe()">Upload and Transcribe</button>
+        <div id="transcription-result" class="mt-4"></div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function uploadAndTranscribe() {
+            const fileInput = document.getElementById('audio-file');
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('audio', file);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Failed to transcribe audio');
+                }
+            })
+            .then(transcription => {
+                document.getElementById('transcription-result').innerHTML = '<strong>Transcription:</strong> ' + transcription;
+            })
+            .catch(error => {
+                console.error('Error transcribing audio:', error);
+                document.getElementById('transcription-result').innerText = 'Failed to transcribe audio';
+            });
+        }
+    </script>
+</body>
+</html>
