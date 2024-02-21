@@ -7,9 +7,13 @@ Our cybersecurity innovations support two important Sustainable Development Goal
 
 Join us on this exciting journey, where Kazakhstan's innovativeness and cutting-edge technologies come together to ensure sustainability in the digital world.
 
+More information about it here in the links below:
+https://youtu.be/ttDXaXkywxg
+https://youtu.be/14w1hx7nkpI
+
 The app uses 3.12.1 python version. Was built using flask and uses google solutions as Google Cloud - Speech to text recognition and Google Gemini AI
 
-The user can upload .wav format audio using web page and the app gives ansewe either it is fraud dialog or not and some recommendation or explanation.
+The user can upload .wav format audio using web page and the app gives answer either it is fraud dialog or not and some recommendation or explanation.
 
 If the app detected the fraud it can make a phone call to a user to warn and prevent from audio frauding (under development).
 
