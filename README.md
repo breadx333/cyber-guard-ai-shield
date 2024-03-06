@@ -17,6 +17,15 @@ The user can upload .wav format audio using web page and the app gives answer ei
 
 If the app detected the fraud it can make a phone call to a user to warn and prevent from audio frauding (under development).
 
+The architecture
+
+![pic](./res/cyber-guard.png)
+
+Main page with output
+
+![pic](./res/result.png)
+
+
 Building instruction:
 ```
 git clone repo-url
